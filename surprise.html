@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Piyudi ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Aesthetic handwritten font -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #e9d5ff, #c7d2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+    overflow: hidden;
+  }
+
+  .envelope {
+    width: 320px;
+    height: 220px;
+    background: #fff;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .flap {
+    position: absolute;
+    inset: 0;
+    background: #fbcfe8;
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    transform-origin: top;
+    transition: transform 1s ease;
+    z-index: 3;
+  }
+
+  .heart {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    z-index: 4;
+  }
+
+  .letter {
+    position: absolute;
+    bottom: -100%;
+    inset-inline: 0;
+    height: 100%;
+    background: #fffaf0;
+    padding: 22px 18px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: bottom 1.2s ease;
+    overflow-y: auto;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .line {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
+    margin-bottom: 12px;
+  }
+
+  .music-link {
+    margin: 14px 0 18px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0.85;
+  }
+
+  .music-link span {
+    display: block;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .music-link:hover {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+
+  .final {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #e11d48;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  .open .flap {
+    transform: rotateX(180deg);
+  }
+
+  .open .letter {
+    bottom: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Dandelion seeds */
+  .seed {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: float 12s linear infinite;
+  }
+
+  @keyframes float {
+    from {
+      transform: translateY(100vh) translateX(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(-10vh) translateX(80px);
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Floating dandelions -->
+<script>
+  for (let i = 0; i < 22; i++) {
+    const seed = document.createElement("div");
+    seed.className = "seed";
+    seed.style.left = Math.random() * 100 + "vw";
+    seed.style.animationDelay = Math.random() * 10 + "s";
+    document.body.appendChild(seed);
+  }
+</script>
+
+<div class="envelope" onclick="openEnvelope()">
+  <div class="flap"></div>
+  <div class="heart">❤️</div>
+
+  <div class="letter" id="letter">
+    <div class="title">Dear Piyudi 🤍</div>
+
+    <div class="line">I love you.</div>
+    <div class="line">I’m not going anywhere.</div>
+
+    <div class="line">
+      I’m sorry for my actions that hurt you unknowingly.<br>
+      I do care for you.
+    </div>
+
+    <div class="line">
+      I am responsible for my actions,<br>
+      and I am really sorry.<br>
+      I’ll take care of it.
+    </div>
+
+    <div class="line">
+      And yeah…<br>
+      you’re important for me<br>
+      more than anything 🥺💖
+    </div>
+
+    <!-- Tulip → Opens song in new tab -->
+    <a href="https://youtube.com/shorts/DipsMWZHvAw?si=i-s5VaoyLcIsIr7c"
+   target="_blank"
+   style="text-decoration:none; color:inherit;">
+
+      <div class="music-link line">
+        🌷
+        <span>Tap the tulip to listen</span>
+      </div>
+    </a>
+
+    <div class="final" id="finalMsg">
+      I’m here. I choose you. Always 🌷
+    </div>
+  </div>
+</div>
+
+<script>
+  function openEnvelope() {
+    document.querySelector('.envelope').classList.add('open');
+
+    const lines = document.querySelectorAll('.line');
+    lines.forEach((line, index) => {
+      line.style.animationDelay = `${index * 1.6}s`;
+    });
+
+    setTimeout(() => {
+      document.getElementById("finalMsg").style.opacity = "1";
+      document.getElementById("letter").scrollTop =
+        document.getElementById("letter").scrollHeight;
+    }, lines.length * 1600 + 2000);
+  }
+</script>
+
+</body>
+</html>
+
